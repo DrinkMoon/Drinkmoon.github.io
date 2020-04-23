@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Drimoon's Blog
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Drimoon
 language: en
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://drinkmoon.github.io/drimoon-blog
+url: https://drinkmoon.github.io/drimoon-blog
 root: /drimoon-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
