@@ -111,10 +111,10 @@ avatar:
   effect: false # 頭像會一直轉圈
 
 # the banner image of index
-index_img:
+index_img: https://res.cloudinary.com/bravey/image/upload/v1582873485/wallroom-2880x1620-bg-3cad5d2.jpg
 
 # if the banner of page not setting,it will show the top_img
-default_top_img: /img/index.png
+default_top_img: https://res.cloudinary.com/bravey/image/upload/v1582873485/wallroom-2880x1620-bg-3cad5d2.jpg
 
 # the banner image of archive page
 archive_img:
@@ -142,10 +142,41 @@ cover:
   # 封面顯示的位置
   # 三個值可配置 left , right , both
   position: both
-  # 當沒有設置cover時，默認的封面顯示
-  default_cover:
-    - /img/post.png
-
+  # the default cover of the post
+  default_cover: 
+    - https://images.pexels.com/photos/33545/sunrise-phu-quoc-island-ocean.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/351448/pexels-photo-351448.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/452780/pexels-photo-452780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/1832328/pexels-photo-1832328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/933843/pexels-photo-933843.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/6758/wildernessculture-rei1440project-welltravelled-awesomeearth.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/655674/pexels-photo-655674.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/629159/pexels-photo-629159.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/640809/pexels-photo-640809.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/1005763/pexels-photo-1005763.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/747016/pexels-photo-747016.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/611328/pexels-photo-611328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/531602/pexels-photo-531602.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/164041/pexels-photo-164041.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/238622/pexels-photo-238622.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/868097/pexels-photo-868097.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/165505/pexels-photo-165505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/358383/pexels-photo-358383.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/417222/pexels-photo-417222.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/1656687/pexels-photo-1656687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/632522/pexels-photo-632522.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/165505/pexels-photo-165505.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/71104/utah-mountain-biking-bike-biking-71104.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+    - https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+  
 # if the photo link cannot connect,it will show that
 lodding_bg:
   flink: /img/friend_404.gif #404後圖片
