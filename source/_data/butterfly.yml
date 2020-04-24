@@ -9,7 +9,7 @@ menu:
   Archives: /archives/ || fa fa-archive
   Tags: /tags/ || fa fa-tags
   Categories: /categories/ || fa fa-folder-open
-  #Link: /link/ || fa fa-link
+  Link: /link/ || fa fa-link
   About: /about/ || fa fa-heart
   #List||fa fa-list:
   #  - Music || /music/ || fa fa-music
@@ -107,7 +107,7 @@ mermaid:
 # Post info settings
 # ---------------
 avatar:
-  img: /img/avatar.png
+  img: https://res.cloudinary.com/drimoon-assets/image/upload/v1587748747/avatar1_qwyzn8.png
   effect: false # 頭像會一直轉圈
 
 # the banner image of index
@@ -517,7 +517,7 @@ hr:
 
 # 主頁subtitle
 subtitle:
-  enable: true
+  enable: false
   # 打字效果
   effect: true
   # 循環或者只打字一次
@@ -533,10 +533,7 @@ subtitle:
   # (如果有英文逗號' , '，請使用轉義字符 &#44;)
   # 如果關閉打字效果，subtitle只會顯示sub的第一行文字
   sub:
-    - Who has seen the wind?
-    - Neither me nor you.
-    - But when the leaves hang trembling,
-    - The wind is passing through.
+    - wind
     
 
 # fontawesome圖標
@@ -552,12 +549,13 @@ aside:
   mobile: true # 手機頁面（ 顯示寬度 < 768px ）是否顯示aside內容
   position: right # left or right
   card_author: true
-  card_announcement: true
+  #card_announcement: true
   card_recent_post: true
   card_categories: true
   card_tags: true
   card_archives: true
-  card_webinfo: true
+  #card_webinfo: true
+  card_music: true
 
 # 網站公告
 announcement:
