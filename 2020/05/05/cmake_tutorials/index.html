@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CMake学习记录 | Wind Soul</title><meta name="description" content="CMake学习记录"><meta name="author" content="Drimoon"><meta name="copyright" content="Drimoon"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/drimoon-blog/img/favicon.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CMake学习记录"><meta name="twitter:description" content="CMake学习记录"><meta name="twitter:image" content="https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg"><meta property="og:type" content="article"><meta property="og:title" content="CMake学习记录"><meta property="og:url" content="https://drinkmoon.github.io/drimoon-blog/2020/05/05/cmake_tutorials/"><meta property="og:site_name" content="Wind Soul"><meta property="og:description" content="CMake学习记录"><meta property="og:image" content="https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/drimoon-blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://drinkmoon.github.io/drimoon-blog/2020/05/05/cmake_tutorials/"><link rel="next" title="2019-总结" href="https://drinkmoon.github.io/drimoon-blog/2019/12/08/2019_summary/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/drimoon-blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/drimoon-blog/atom.xml" title="Wind Soul" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://res.cloudinary.com/drimoon-assets/image/upload/v1587748747/avatar1_qwyzn8.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/drimoon-blog/archives/"><div class="headline">Articles</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake"><span class="toc-number">1.</span> <span class="toc-text">CMake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初级"><span class="toc-number">1.2.</span> <span class="toc-text">初级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置-使用变量"><span class="toc-number">1.2.1.</span> <span class="toc-text">设置&#x2F;使用变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级目录管理"><span class="toc-number">1.2.2.</span> <span class="toc-text">多级目录管理</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/drimoon-blog/">Wind Soul</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">CMake学习记录</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-05-05 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2020-05-05</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-05-05 17:48:41"><i class="fa fa-history" aria-hidden="true"></i> Updated 2020-05-05</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p>选择CMake的理由是它相比其他构建项目的工具应用更广泛，安装基本不需要依赖，也支持了一些现代化的语法。但我发现虽然有很多关于不同语法的文档，但缺乏比较好的从零开始的CMake中文教程，预期我会踩进很多坑，所以写这篇博客作为个人学习记录，同时方便他人参考。</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>CMake构建使用自己开发的脚本语言，以HelloWorld作为开始：</p>
+<ul>
+<li>新建项目文件夹，在其中创建CMakeLists.txt</li>
+<li>指定本项目构建需要的最低CMake版本: cmake_minimum_required(VERSION xxx)<ul>
+<li>我们尽量选择3.x最近的正式发布版本作为学习</li>
+</ul>
+</li>
+<li>指定项目名称/版本，使用的编程语言：project(HelloWorld VERSION 0.1.0 LANGUAGES CXX)<ul>
+<li>还可以指定项目描述，项目主页，这里略过</li>
+</ul>
+</li>
+<li>简单添加一个main.cpp并指定生成的exe名称<ul>
+<li>add_executable(HelloWorld Main.cpp)</li>
+</ul>
+</li>
+<li>打开CMake-GUI，source code目录指向项目路径，build目录可以在项目目录下新建文件夹Build并指向它</li>
+<li>点击Config，选择IDE和Platform，确定(本文以VS2019, x64的Windows环境举例)</li>
+<li>点击Generate，成功后会发现Build文件夹出现了项目名.sln，打开</li>
+<li>会出现ALL_BUILD(相当于makefile的默认目标，用于构建所有项目)，HelloWorld，ZERO_CHECK(CMake用于检查CMakeLists.txt是否过期，用于保证CMakeLists.txt修改后能够正确重新构建)三个项目</li>
+</ul>
+<p>CMakeLists.txt：</p>
+<pre><code># CMake vesion in my local machine is 3.17
+cmake_minimum_required(VERSION 3.17)
+# Language C++ : CXX
+project(HelloWorld VERSION 0.1.0 LANGUAGES CXX)
+add_executable(HelloWorld Main.cpp)</code></pre><p>Main.cpp：</p>
+<pre><code>#include &lt;iostream&gt;
+
+int main()
+{
+    std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
+    return 0;
+}</code></pre><h2 id="初级"><a href="#初级" class="headerlink" title="初级"></a>初级</h2><h3 id="设置-使用变量"><a href="#设置-使用变量" class="headerlink" title="设置/使用变量"></a>设置/使用变量</h3><p>我们发现项目名称HelloWorld之前重复出现了，现在定义一个变量作为项目名称：SET(ProjectName HelloWorld)，可以通过${ProjectName}来使用它</p>
+<pre><code>cmake_minimum_required(VERSION 3.17)
+SET(ProjectName HelloWorld)
+project(${ProjectName} VERSION 0.1.0 LANGUAGES CXX)
+add_executable(${ProjectName} Main.cpp)</code></pre><h3 id="多级目录管理"><a href="#多级目录管理" class="headerlink" title="多级目录管理"></a>多级目录管理</h3><p>最近打算写一个命名为Hammer的软渲染器，目录结构如下：</p>
+<ul>
+<li>Hammer<ul>
+<li>src<ul>
+<li>core<ul>
+<li>include<ul>
+<li>*.h</li>
+</ul>
+</li>
+<li>*.cpp</li>
+</ul>
+</li>
+<li>utility<ul>
+<li>include<ul>
+<li>*.h</li>
+</ul>
+</li>
+<li>*.cpp</li>
+</ul>
+</li>
+<li>Main.cpp</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>步骤：</p>
+<ul>
+<li>在项目根目录，src目录下分别创建CMakeLists.txt</li>
+<li>Hammer/CMakeLists.txt:<ul>
+<li>包含子目录：add_subdirectory(src)，这句指令会执行src/CMakeLists.txt的内容</li>
+</ul>
+</li>
+<li>Hammer/src/CMakeLists.txt<ul>
+<li>包含头文件: include_directories(./core/include ./utility/include)</li>
+<li>搜索所有源文件：aux_source_directory(. ALL_SRCS), aux_source_directory(./core/ ALL_SRCS), aux_source_directory(./utility/ ALL_SRCS)</li>
+<li>包含源文件：add_executable(${ProjectName} ${ALL_SRCS})</li>
+</ul>
+</li>
+</ul>
+<p>这里的使用aux_source_directory命令是因为add_executable一个个写文件名过于麻烦，这个命令可以把所有要加的文件名写到某个变量里，我这里命名为ALL_SRCS。</p>
+<p>Hammer/CMakeLists.txt:</p>
+<pre><code>cmake_minimum_required(VERSION 3.17)
+SET(ProjectName Hammer)
+project(${ProjectName} VERSION 0.1.0 LANGUAGES CXX)
+add_subdirectory(src)</code></pre><p>Hammer/src/CMakeLists.txt:</p>
+<pre><code>include_directories(
+./core/include
+./utility/include
+)
+aux_source_directory(. ALL_SRCS)
+aux_source_directory(./core/ ALL_SRCS)
+aux_source_directory(./utility/ ALL_SRCS)
+add_executable(${ProjectName} ${ALL_SRCS})</code></pre></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Drimoon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://drinkmoon.github.io/drimoon-blog/2020/05/05/cmake_tutorials/">https://drinkmoon.github.io/drimoon-blog/2020/05/05/cmake_tutorials/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/drimoon-blog/2019/12/08/2019_summary/"><img class="next_cover lazyload" data-src="https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">2019-总结</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Drimoon</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/drimoon-blog/js/utils.js"></script><script src="/drimoon-blog/js/main.js"></script><script src="/drimoon-blog/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
