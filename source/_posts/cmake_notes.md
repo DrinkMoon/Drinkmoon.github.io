@@ -6,9 +6,9 @@ cover: https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/202001
 # CMake
 选择理由是它比其他make工具应用更广泛，安装也很简单，官方持续更新了很多现代化的语法。 但目前虽然有很多文档/材料，但缺乏优秀的从零开始的CMake中文教程，之前大学里写CMake就经常遇坑，只能用StackOverflow维持生活... 所以这篇博客是关于我学习CMake的记录，也可作为新手教程以供参考。
 
-我倾向于用实际例子记录，对出现的问题进行解释、修正，对写起来不优雅的地方进行优化，这些在子标题中会带有[]标签，如果你对此不感兴趣，可以跳过。
+我倾向于用实际例子记录，对出现的问题进行解释、修正，对写起来不优雅的地方进行优化。
 
-另外，因为存在个人翻译不准确的情况，附加了一些超链接作为参考用的原文。
+另外，因为存在个人翻译不准确的情况，附加了一些参考的超链接。
 
 ## Hello, World
 CMake构建需要使用它特定的脚本语言，以HelloWorld作为开始：
@@ -67,17 +67,17 @@ Main.cpp：
 ### 组织多重目录
 现在我们的代码是分散在各个子目录里的，需要使用add\_subdirectory(目录)包含子目录，这些子目录下也需要创建CMakeLists.txt，会在add_subdirectory后执行。
 
-### 包含多个头文件 & 添加多个源文件
-现在我们需要包含头文件目录，使用include\_directories(目录)。
-add\_executable现在要输入多个源文件名称，我们想要让CMake可以自动搜索目录下的源文件然后输入过来。
-使用aux\_source\_directory(目录 变量名)：这个指令可以将目录下的所有源文件写入到变量中。
-
 ./CMakeLists.txt:
 
 	cmake_minimum_required(VERSION 3.17)
 	SET(ProjectName FireSoul)
 	project(${ProjectName} VERSION 0.1.0 LANGUAGES CXX)
 	add_subdirectory(source)
+
+### 包含多个头文件 & 添加多个源文件
+现在我们需要包含头文件目录，使用include\_directories(目录)。
+add\_executable现在要输入多个源文件名称，我们想要让CMake可以自动搜索目录下的源文件然后输入过来。
+使用aux\_source\_directory(目录 变量名)：这个指令可以将目录下的所有源文件写入到变量中。
 
 ./source/CMakeLists.txt:
 
@@ -92,7 +92,15 @@ add\_executable现在要输入多个源文件名称，我们想要让CMake可以
 	aux_source_directory(./main/ CxxFiles)
 	add_executable(${ProjectName} ${CxxFiles})
 
-### [优化] 使用更现代化的target\_include\_directories
+### 设置字符集
+add\_definitions(-DUNICODE -D_UNICODE)
+
+### 设置为窗口程序
+set_target_properties(${ProjectName} PROPERTIES
+	LINK_FLAGS /SUBSYSTEM:WINDOWS
+)
+
+### [优化] 使用target\_include\_directories
 include\_directories在CMake新版本中不被推荐，可以使用进阶版的target\_include\_directories(项目 作用域 头文件目录)。
 
 有三种[不同的作用域](https://stackoverflow.com/questions/26243169/cmake-target-include-directories-meaning-of-scope "不同的作用域")：
@@ -113,19 +121,30 @@ include\_directories在CMake新版本中不被推荐，可以使用进阶版的t
 
 
 ./source/CMakeLists.txt:
-	
+
 	SET(HeaderFiles
-	 ./math/include/MathHelper.h
+	 ./common/include/Camera.h
+	 ./common/include/d3dApp.h
+	 ./common/include/d3dUtil.h
+	 ./common/include/d3dx12.h
+	 ./common/include/DDSTextureLoader.h
+	 ./common/include/GameTimer.h
+	 ./common/include/GeometryGenerator.h
+	 ./common/include/MathHelper.h
+	 ./common/include/UploadBuffer.h
 	)
 	
 	aux_source_directory(. CxxFiles)
 	aux_source_directory(./core/ CxxFiles)
-	aux_source_directory(./math/ CxxFiles)
+	aux_source_directory(./common/ CxxFiles)
 	aux_source_directory(./main/ CxxFiles)
 	
 	add_executable(${ProjectName} ${HeaderFiles} ${CxxFiles})
+	set_target_properties(${ProjectName} PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:WINDOWS
+	)
 	target_include_directories(${ProjectName} PRIVATE
 		./core/include
-		./math/include
+		./common/include
 		./main/include
 	)
