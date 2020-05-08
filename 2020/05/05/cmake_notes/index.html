@@ -82,7 +82,7 @@ function activateLightMode(){
   opacity: 1
 }
 </style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/drimoon-blog/atom.xml" title="Wind Soul" type="application/atom+xml">
-</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://res.cloudinary.com/drimoon-assets/image/upload/v1587748747/avatar1_qwyzn8.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/drimoon-blog/archives/"><div class="headline">Articles</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake"><span class="toc-number">1.</span> <span class="toc-text">CMake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.1.</span> <span class="toc-text">Hello, World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-a-bigger-World"><span class="toc-number">1.2.</span> <span class="toc-text">Hello, a bigger World</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组织多重目录"><span class="toc-number">1.2.1.</span> <span class="toc-text">组织多重目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含多个头文件-amp-添加多个源文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">包含多个头文件 &amp; 添加多个源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置字符集"><span class="toc-number">1.2.3.</span> <span class="toc-text">设置字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置为窗口程序"><span class="toc-number">1.2.4.</span> <span class="toc-text">设置为窗口程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化-使用target-include-directories"><span class="toc-number">1.2.5.</span> <span class="toc-text">[优化] 使用target_include_directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-包含目录识别为外部依赖"><span class="toc-number">1.2.6.</span> <span class="toc-text">[问题] 包含目录识别为外部依赖</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/drimoon-blog/">Wind Soul</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">CMake学习记录</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-05-05 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2020-05-05</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-05-08 16:27:29"><i class="fa fa-history" aria-hidden="true"></i> Updated 2020-05-08</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p>选择理由是它比其他make工具应用更广泛，安装也很简单，官方持续更新了很多现代化的语法。 但目前虽然有很多文档/材料，但缺乏优秀的从零开始的CMake中文教程，之前大学里写CMake就经常遇坑，只能用StackOverflow维持生活… 所以这篇博客是关于我学习CMake的记录，也可作为新手教程以供参考。</p>
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://res.cloudinary.com/drimoon-assets/image/upload/v1587748747/avatar1_qwyzn8.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/drimoon-blog/archives/"><div class="headline">Articles</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CMake"><span class="toc-number">1.</span> <span class="toc-text">CMake</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.1.</span> <span class="toc-text">Hello, World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-a-bigger-World"><span class="toc-number">1.2.</span> <span class="toc-text">Hello, a bigger World</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组织多重目录"><span class="toc-number">1.2.1.</span> <span class="toc-text">组织多重目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置输出目录为bin"><span class="toc-number">1.2.2.</span> <span class="toc-text">设置输出目录为bin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Unicode字符集"><span class="toc-number">1.2.3.</span> <span class="toc-text">设置Unicode字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置为窗口程序"><span class="toc-number">1.2.4.</span> <span class="toc-text">设置为窗口程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含多个头文件-amp-添加多个源文件"><span class="toc-number">1.2.5.</span> <span class="toc-text">包含多个头文件 &amp; 添加多个源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化-使用target-include-directories"><span class="toc-number">1.2.6.</span> <span class="toc-text">[优化] 使用target_include_directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-包含目录识别为外部依赖"><span class="toc-number">1.2.7.</span> <span class="toc-text">[问题] 包含目录识别为外部依赖</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://res.cloudinary.com/drimoon-assets/image/upload/v1587660337/20200112164925_kcxb6u.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/drimoon-blog/">Wind Soul</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/drimoon-blog/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/drimoon-blog/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">CMake学习记录</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-05-05 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2020-05-05</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-05-08 17:54:42"><i class="fa fa-history" aria-hidden="true"></i> Updated 2020-05-08</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p>选择理由是它比其他make工具应用更广泛，安装也很简单，官方持续更新了很多现代化的语法。 但目前虽然有很多文档/材料，但缺乏优秀的从零开始的CMake中文教程，之前大学里写CMake就经常遇坑，只能用StackOverflow维持生活… 所以这篇博客是关于我学习CMake的记录，也可作为新手教程以供参考。</p>
 <p>我倾向于用实际例子记录，对出现的问题进行解释、修正，对写起来不优雅的地方进行优化。</p>
 <p>另外，因为存在个人翻译不准确的情况，附加了一些参考的超链接。</p>
 <h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello, World"></a>Hello, World</h2><p>CMake构建需要使用它特定的脚本语言，以HelloWorld作为开始：</p>
@@ -121,24 +121,32 @@ int main()
 {
     std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
     return 0;
-}</code></pre><h2 id="Hello-a-bigger-World"><a href="#Hello-a-bigger-World" class="headerlink" title="Hello, a bigger World"></a>Hello, a bigger World</h2><p>最近正好在学习DirectX12，试试用CMake来构建我的图形程序~</p>
+}</code></pre><h2 id="Hello-a-bigger-World"><a href="#Hello-a-bigger-World" class="headerlink" title="Hello, a bigger World"></a>Hello, a bigger World</h2><p>最近正好在学习DirectX12，试试用CMake来构建图形程序~</p>
 <p>与构建相关的目录结构如下：</p>
 <ul>
 <li>FireSoul<ul>
-<li>build : 构建目录</li>
+<li>assets ： 资源目录</li>
 <li>bin : 输出目录</li>
+<li>build : 构建目录</li>
 <li>lib ：库目录</li>
-<li>test : 测试用例</li>
-<li>source ： 源码<ul>
-<li>core/math/…<ul>
-<li>include : 存放*.h</li>
+<li>src ： 源码<ul>
+<li>folder1<ul>
+<li>include<ul>
+<li>*.h</li>
+</ul>
+</li>
 <li>*.cpp</li>
 </ul>
 </li>
-<li>main<ul>
-<li>main.cpp</li>
+<li>folder2<ul>
+<li>include<ul>
+<li>*.h</li>
 </ul>
 </li>
+<li>*.cpp</li>
+</ul>
+</li>
+<li>… </li>
 <li>CMakeLists.txt</li>
 </ul>
 </li>
@@ -147,23 +155,30 @@ int main()
 </li>
 </ul>
 <h3 id="组织多重目录"><a href="#组织多重目录" class="headerlink" title="组织多重目录"></a>组织多重目录</h3><p>现在我们的代码是分散在各个子目录里的，需要使用add_subdirectory(目录)包含子目录，这些子目录下也需要创建CMakeLists.txt，会在add_subdirectory后执行。</p>
-<p>./CMakeLists.txt:</p>
+<h3 id="设置输出目录为bin"><a href="#设置输出目录为bin" class="headerlink" title="设置输出目录为bin"></a>设置输出目录为bin</h3><p>SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)</p>
+<h3 id="设置Unicode字符集"><a href="#设置Unicode字符集" class="headerlink" title="设置Unicode字符集"></a>设置Unicode字符集</h3><p>add_definitions(-DUNICODE -D_UNICODE)</p>
+<p>./CMakeLists.txt</p>
 <pre><code>cmake_minimum_required(VERSION 3.17)
 SET(ProjectName FireSoul)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 project(${ProjectName} VERSION 0.1.0 LANGUAGES CXX)
-add_subdirectory(source)</code></pre><h3 id="包含多个头文件-amp-添加多个源文件"><a href="#包含多个头文件-amp-添加多个源文件" class="headerlink" title="包含多个头文件 &amp; 添加多个源文件"></a>包含多个头文件 &amp; 添加多个源文件</h3><p>现在我们需要包含头文件目录，使用include_directories(目录)。<br>add_executable现在要输入多个源文件名称，我们想要让CMake可以自动搜索目录下的源文件然后输入过来。<br>使用aux_source_directory(目录 变量名)：这个指令可以将目录下的所有源文件写入到变量中。</p>
+add_definitions(-DUNICODE -D_UNICODE)
+add_subdirectory(src)</code></pre><h3 id="设置为窗口程序"><a href="#设置为窗口程序" class="headerlink" title="设置为窗口程序"></a>设置为窗口程序</h3><p>set_target_properties(${ProjectName} PROPERTIES<br>    LINK_FLAGS /SUBSYSTEM:WINDOWS</p>
+<h3 id="包含多个头文件-amp-添加多个源文件"><a href="#包含多个头文件-amp-添加多个源文件" class="headerlink" title="包含多个头文件 &amp; 添加多个源文件"></a>包含多个头文件 &amp; 添加多个源文件</h3><p>现在我们需要包含头文件目录，使用include_directories(目录)。<br>add_executable现在要输入多个源文件名称，我们想要让CMake可以自动搜索目录下的源文件然后输入过来。<br>使用aux_source_directory(目录 变量名)：这个指令可以将目录下的所有源文件写入到变量中。</p>
 <p>./source/CMakeLists.txt:</p>
 <pre><code>include_directories(
-./core/include
-./math/include
-./main/include
+    ./core/include
+    ./common/include
+    ./main/include
 )
 aux_source_directory(. CxxFiles)
 aux_source_directory(./core/ CxxFiles)
-aux_source_directory(./math/ CxxFiles)
+aux_source_directory(./common/ CxxFiles)
 aux_source_directory(./main/ CxxFiles)
-add_executable(${ProjectName} ${CxxFiles})</code></pre><h3 id="设置字符集"><a href="#设置字符集" class="headerlink" title="设置字符集"></a>设置字符集</h3><p>add_definitions(-DUNICODE -D_UNICODE)</p>
-<h3 id="设置为窗口程序"><a href="#设置为窗口程序" class="headerlink" title="设置为窗口程序"></a>设置为窗口程序</h3><p>set_target_properties(${ProjectName} PROPERTIES<br>    LINK_FLAGS /SUBSYSTEM:WINDOWS<br>)</p>
+add_executable(${ProjectName} ${CxxFiles})
+set_target_properties(${ProjectName} PROPERTIES
+    LINK_FLAGS /SUBSYSTEM:WINDOWS
+)</code></pre><p>)</p>
 <h3 id="优化-使用target-include-directories"><a href="#优化-使用target-include-directories" class="headerlink" title="[优化] 使用target_include_directories"></a>[优化] 使用target_include_directories</h3><p>include_directories在CMake新版本中不被推荐，可以使用进阶版的target_include_directories(项目 作用域 头文件目录)。</p>
 <p>有三种<a href="https://stackoverflow.com/questions/26243169/cmake-target-include-directories-meaning-of-scope" target="_blank" rel="noopener" title="不同的作用域">不同的作用域</a>：</p>
 <ul>
@@ -196,6 +211,8 @@ add_executable(${ProjectName} ${CxxFiles})</code></pre><h3 id="设置字符集">
  ./common/include/GeometryGenerator.h
  ./common/include/MathHelper.h
  ./common/include/UploadBuffer.h
+ ./main/include/ShadowMap.h
+ ./main/include/FrameResource.h
 )
 
 aux_source_directory(. CxxFiles)
