@@ -46,33 +46,49 @@ Main.cpp：
 	}
 
 ## Hello, a bigger World
-最近正好在学习DirectX12，试试用CMake来构建我的图形程序~
+最近正好在学习DirectX12，试试用CMake来构建图形程序~
 
 与构建相关的目录结构如下：
 
 - FireSoul
-	- build : 构建目录
+	- assets ： 资源目录
 	- bin : 输出目录
+	- build : 构建目录
 	- lib ：库目录
-	- test : 测试用例
-	- source ： 源码
-		- core/math/...
-			- include : 存放*.h
+	- src ： 源码
+		- folder1
+			- include
+				- *.h
 			- *.cpp
-		- main
-			- main.cpp
+		- folder2
+			- include
+				- *.h
+			- *.cpp
+		- ... 
 		- CMakeLists.txt
 	- CMakeLists.txt
 
 ### 组织多重目录
 现在我们的代码是分散在各个子目录里的，需要使用add\_subdirectory(目录)包含子目录，这些子目录下也需要创建CMakeLists.txt，会在add_subdirectory后执行。
 
-./CMakeLists.txt:
+### 设置输出目录为bin
+SET(EXECUTABLE\_OUTPUT\_PATH ${PROJECT\_SOURCE\_DIR}/bin)
+
+### 设置Unicode字符集
+add\_definitions(-DUNICODE -D_UNICODE)
+
+./CMakeLists.txt
 
 	cmake_minimum_required(VERSION 3.17)
 	SET(ProjectName FireSoul)
+	SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 	project(${ProjectName} VERSION 0.1.0 LANGUAGES CXX)
-	add_subdirectory(source)
+	add_definitions(-DUNICODE -D_UNICODE)
+	add_subdirectory(src)
+
+### 设置为窗口程序
+set\_target\_properties(${ProjectName} PROPERTIES
+	LINK_FLAGS /SUBSYSTEM:WINDOWS
 
 ### 包含多个头文件 & 添加多个源文件
 现在我们需要包含头文件目录，使用include\_directories(目录)。
@@ -82,22 +98,18 @@ add\_executable现在要输入多个源文件名称，我们想要让CMake可以
 ./source/CMakeLists.txt:
 
 	include_directories(
-	./core/include
-	./math/include
-	./main/include
+		./core/include
+		./common/include
+		./main/include
 	)
 	aux_source_directory(. CxxFiles)
 	aux_source_directory(./core/ CxxFiles)
-	aux_source_directory(./math/ CxxFiles)
+	aux_source_directory(./common/ CxxFiles)
 	aux_source_directory(./main/ CxxFiles)
 	add_executable(${ProjectName} ${CxxFiles})
-
-### 设置字符集
-add\_definitions(-DUNICODE -D_UNICODE)
-
-### 设置为窗口程序
-set_target_properties(${ProjectName} PROPERTIES
-	LINK_FLAGS /SUBSYSTEM:WINDOWS
+	set_target_properties(${ProjectName} PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:WINDOWS
+	)
 )
 
 ### [优化] 使用target\_include\_directories
@@ -119,7 +131,6 @@ include\_directories在CMake新版本中不被推荐，可以使用进阶版的t
 ### [问题] 包含目录识别为外部依赖
 这里发现虽然项目构建/编译成功，但是头文件被项目识别为[外部依赖](https://stackoverflow.com/questions/13703647/how-to-properly-add-include-directories-with-cmake#](https://stackoverflow.com/questions/13703647/how-to-properly-add-include-directories-with-cmake# "外部依赖")，没有出现在项目中。 这里我们需要把所有*.h加到add\_executeable中。
 
-
 ./source/CMakeLists.txt:
 
 	SET(HeaderFiles
@@ -132,6 +143,8 @@ include\_directories在CMake新版本中不被推荐，可以使用进阶版的t
 	 ./common/include/GeometryGenerator.h
 	 ./common/include/MathHelper.h
 	 ./common/include/UploadBuffer.h
+	 ./main/include/ShadowMap.h
+	 ./main/include/FrameResource.h
 	)
 	
 	aux_source_directory(. CxxFiles)
