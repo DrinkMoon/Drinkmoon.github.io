@@ -1,8 +1,20 @@
 class:
-  class_name: 友情鏈接
+  class_name: 推荐博客
   link_list:
     1:
       name: GamerNoTitle
       link: https://bili33.top/
       avatar: https://cdn.jsdelivr.net/gh/GamerNoTitle/Picture-repo@1.0/AboutMe/logo-mini.png
-      descr: 
+      descr: hexo修改教程作者
+      
+    2:
+      name: TheCodeWay
+      link: https://thecodeway.com/blog/
+      avatar: https://thecodeway.com/blog/wp-content/uploads/2018/04/vdice_01.png
+      descr: 大学关注的博客
+      
+    3:
+      name: 云风
+      link: http://codingnow.com/
+      avatar: https://blog.codingnow.com/image/rc.jpg
+      descr: 偶像级程序员
