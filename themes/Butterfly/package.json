@@ -3,6 +3,6 @@
   "version": "2.2.5",
   "description": "A Hexo Theme: Butterfly",
   "dependencies": {
-    "pug": "^2.0.4"
+    "pug": "^3.0.1"
   }
 }
